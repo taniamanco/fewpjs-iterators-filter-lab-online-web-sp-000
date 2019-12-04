@@ -1,22 +1,18 @@
-// Code your solution here
-function driversWithRevenueOver(driverArr, revenue) {
-    return driverArr.filter(driver => driver.revenue > revenue);
+function findMatching (list, name) {
+  return list.filter(function (driverName) {
+    return driverName.toLowerCase() === name.toLowerCase();
+  });
 }
 
-function driverNamesWithRevenueOver(driverArr, revenue) {
-    return driversWithRevenueOver(driverArr, revenue).map(driver => driver.name);
+function fuzzyMatch (list, partialName) {
+  let lengthOfName = partialName.length;
+  return list.filter(function (driverName) {
+    return driverName.slice(0, lengthOfName) === partialName;
+  });
 }
 
-function exactMatch(driverArr, query) {
-    return driverArr.filter(driver => {
-        let hasMatch = false;
-        for (const key in query) {
-            hasMatch = driver[key] === query[key];
-        }
-        return hasMatch;
-    })
-}
-
-function exactMatchToList(driverArr, query){
-    return exactMatch(driverArr, query).map(driver => driver.name)
+function matchName (list, name) {
+  return list.filter(function (driver) {
+    return driver.name.toLowerCase() === name.toLowerCase();
+  });
 }
